@@ -1,3 +1,8 @@
+export interface IamPolicy {
+    PolicyName: string;
+    PolicyDocument: IamRolePolicy;
+}
+
 export interface IamRolePolicy {
     Version: string;
     Statement: IAMPolicyStatement[];
