@@ -1,17 +1,22 @@
-export function isValidAwsIamPolicy(json: unknown): boolean {
-    if (json === null) {
+import { IamPolicy } from '../types/aws-iam-policy.type';
+
+export function isResourceValid(policy: IamPolicy): boolean {
+    const { PolicyName, PolicyDocument } = policy;
+
+    if (!PolicyName || !PolicyDocument) {
         return false;
     }
 
-    if (typeof json !== 'object') {
-        return false;
-    }
+    for (const statement of PolicyDocument.Statement) {
+        const { Resource } = statement;
 
-    // @ts-ignore
-    const { Version, Statement } = json;
+        if (Resource === '*') {
+            return false;
+        }
 
-    if (!Version || !Statement) {
-        return false;
+        if (Array.isArray(Resource) && Resource.includes('*')) {
+            return false;
+        }
     }
 
     return true;
