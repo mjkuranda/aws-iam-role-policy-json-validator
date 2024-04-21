@@ -1,6 +1,4 @@
-import { IamPolicy } from '../types/aws-iam-policy.type';
-
-export function isResourceValid(policy: IamPolicy): boolean {
+export function isResourceValid(policy) {
     const { PolicyName, PolicyDocument } = policy;
 
     if (!PolicyName || !PolicyDocument) {
