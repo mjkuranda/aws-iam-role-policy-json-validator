@@ -1,11 +1,10 @@
-import { IamPolicy } from '../src/types/aws-iam-policy.type';
-import { isResourceValid } from '../src/utils/json-validator';
-import { readJson } from '../src/utils/json-reader';
+import { isResourceValid } from '../src/utils/json-validator.js';
+import { readJson } from '../src/utils/json-reader.js';
 
 describe('isResourceValid', () => {
     describe('Valid resource', () => {
         it('should return true when no asterisk', () => {
-            const policy: IamPolicy = readJson('tests/no-asterisk');
+            const policy = readJson('tests/no-asterisk');
 
             expect(isResourceValid(policy)).toBe(true);
         });
