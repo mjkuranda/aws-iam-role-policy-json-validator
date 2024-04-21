@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "babel src -d dist/src && babel tests -d dist/tests",
-    "start": "node src/index.js",
+    "start": "node dist/src/index.js",
     "test": "jest --passWithNoTests"
   },
   "jest": {
@@ -15,9 +15,6 @@
     ],
     "rootDir": "",
     "testMatch": ["<rootDir>/dist/tests/**/*.test.js"],
-    "transform": {
-      "^.+\\.(t|j)s$": "ts-jest"
-    },
     "collectCoverageFrom": [
       "**/*.(t|j)s"
     ],
@@ -33,7 +30,6 @@
     "babel-jest": "^29.7.0",
     "@babel/preset-env": "7.24.4",
     "@babel/parser": "^7.24.4",
-    "@babel/register": "^7.23.7",
-    "ts-jest": "^29.1.0"
+    "@babel/register": "^7.23.7"
   }
 }
